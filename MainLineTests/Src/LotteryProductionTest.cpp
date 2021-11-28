@@ -11,6 +11,15 @@ void LotteryProductionTest::tearDown()
 void LotteryProductionTest::lotteryHas6NumbersTest()
 {
     std::cout << std::endl << std::endl;
+    m_lotteryNumbers = {1, 2, 3, 5, 7, 24};
+    std::pair<bool, std::set<int>> lotteryPair = m_lottery->validateLottery(m_lotteryNumbers);
+    bool lotteryIsValid = lotteryPair.first;
+    m_lotteryNumbers = lotteryPair.second;
+
+
+    CPPUNIT_ASSERT(m_lotteryNumbers.size() == m_MAX_LOTTERY_NUMBERS);
+    CPPUNIT_ASSERT(lotteryIsValid == true);
+
     std::cout << clr::green << "LOTTERY HAS 6 NUMBERS TEST PASSED" << std::endl; 
     std::cout << clr::white;
     std::cout << std::endl << std::endl;
@@ -18,6 +27,16 @@ void LotteryProductionTest::lotteryHas6NumbersTest()
 
 void LotteryProductionTest::lotteryDoesntHave6NumbersTest()
 {
+    std::cout << std::endl << std::endl;
+    m_lotteryNumbers = {1, 2, 3, 5, 7};
+    std::pair<bool, std::set<int>> lotteryPair = m_lottery->validateLottery(m_lotteryNumbers);
+    bool lotteryIsValid = lotteryPair.first;
+    m_lotteryNumbers = lotteryPair.second;
+
+
+    CPPUNIT_ASSERT(m_lotteryNumbers.size() != m_MAX_LOTTERY_NUMBERS);
+    CPPUNIT_ASSERT(lotteryIsValid == false);
+
     std::cout << std::endl << std::endl;
     std::cout << clr::green << "LOTTERY DOESN'T HAVE 6 NUMBERS TEST PASSED" << std::endl; 
     std::cout << clr::white;
