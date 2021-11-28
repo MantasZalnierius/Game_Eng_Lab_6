@@ -22,5 +22,6 @@ public:
     void lotteryNumbersNotInRangeTest();
     void lotteryNumbersInRangeTest();
     void lotteryUniqueNumbersTest();
+    void lotteryNoUnqiueNumbersTest();
     void failedTest();
 };
